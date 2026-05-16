@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elektro Rudig | Ihr Elektriker im Raum Mils</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-bg: #F4F4F6;
+    --color-surface: #FFFFFF;
+    --color-text: #18181B;
+    --color-text-muted: #52525B;
+    --color-accent: #EAB308;
+    --color-accent-light: #fef08a;
+    --color-dark: #27272A;
+    --color-border: #e4e4e7;
+
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --text-xs: clamp(0.75rem, 1.5vw, 0.875rem);
+    --text-sm: clamp(0.875rem, 1.8vw, 1rem);
+    --text-base: clamp(1rem, 2vw, 1.125rem);
+    --text-lg: clamp(1.125rem, 2.5vw, 1.375rem);
+    --text-xl: clamp(1.375rem, 3vw, 1.75rem);
+    --text-2xl: clamp(1.75rem, 4vw, 2.5rem);
+    --text-3xl: clamp(2.25rem, 5vw, 3.5rem);
+    --text-4xl: clamp(3rem, 7vw, 5rem);
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-24: 6rem;
+    
+    --section-padding: clamp(4rem, 10vw, 8rem);
+    --container-width: 1280px;
+
+    --z-base: 0;
+    --z-raised: 10;
+    --z-dropdown: 100;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+  }
+
+  p {
+    margin-bottom: var(--space-4);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-accent);
+    color: var(--color-text);
+    padding: var(--space-2) var(--space-4);
+    z-index: 9999;
+    font-weight: 500;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  .container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+  }
+
+  [data-lucide] {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .icon-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    font-weight: 500;
+    padding: 0.875rem 1.75rem;
+    border-radius: 2px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    position: relative;
+    z-index: var(--z-raised);
+    text-align: center;
+  }
+  .btn:hover {
+    background-color: #dca506;
+    transform: translateY(-1px);
+  }
+  .btn--outline {
+    background-color: transparent;
+    border: 1px solid var(--color-text);
+  }
+  .btn--outline:hover {
+    background-color: var(--color-text);
+    color: var(--color-surface);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Header & Nav */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+  .desktop-nav ul {
+    display: flex;
+    gap: var(--space-8);
+  }
+  .desktop-nav a {
+    font-weight: 500;
+    font-size: var(--text-sm);
+  }
+  .desktop-nav a:hover {
+    color: var(--color-accent);
+  }
+
+  .nav-toggle {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1002;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .mobile-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .mobile-overlay ul {
+    text-align: center;
+  }
+  .mobile-overlay a {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    padding: 1rem 0;
+  }
+
+  @media (min-width: 769px) {
+    .nav-toggle { display: none; pointer-events: none; }
+    .desktop-nav { display: block; }
+  }
+
+  /* Hero */
+  .hero {
+    padding-top: 4.5rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  .hero-content {
+    padding: var(--space-12) 0;
+  }
+  .hero h1 {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-6);
+    line-height: 1.05;
+  }
+  .hero p {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-8);
+    max-width: 500px;
+  }
+  
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8);
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    opacity: 0.15;
+    z-index: -1;
+    filter: blur(40px);
+  }
+  .hero-visual img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.1));
+  }
+
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+    }
+  }
+
+  /* Section Common */
+  .section {
+    padding: var(--section-padding) 0;
+  }
+  .section-header {
+    margin-bottom: var(--space-12);
+  }
+  .section-title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+  }
+  .section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+  }
+
+  /* About */
+  .about {
+    background-color: var(--color-surface);
+  }
+  .about-content {
+    max-width: 65ch;
+    margin: 0 auto;
+  }
+  .about blockquote {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    color: var(--color-accent);
+    line-height: 1.2;
+    margin: var(--space-8) 0;
+    padding-left: var(--space-6);
+    border-left: 4px solid var(--color-accent);
+  }
+
+  /* Services */
+  #dienstleistungen {
+    position: relative;
+    overflow: hidden;
+  }
+  #dienstleistungen::before {
+    content: '';
+    position: absolute;
+    top: 40%;
+    right: -5%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    background-image: url('https://www.elektro-rudig.at/wp-content/uploads/2024/09/Elektro-Rudig-blitz-final-v01.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    position: relative;
+    z-index: 1;
+  }
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .service-card {
+    background-color: var(--color-surface);
+    padding: var(--space-8);
+    border-top: 4px solid var(--color-accent);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  .service-card h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+  }
+  .service-card p {
+    color: var(--color-text-muted);
+    flex-grow: 1;
+  }
+  .service-card .btn {
+    align-self: flex-start;
+    margin-top: var(--space-6);
+  }
+
+  /* Team */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-6);
+  }
+  .team-member {
+    background-color: var(--color-surface);
+    padding: var(--space-4);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .team-img-wrapper {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: var(--space-4);
+    background-color: var(--color-border);
+    border-radius: 2px;
+  }
+  .team-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease, transform 0.4s ease;
+  }
+  .team-member:hover .team-img-wrapper img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+  }
+  .team-member h4 {
+    font-size: var(--text-lg);
+    margin-bottom: 0.25rem;
+  }
+  .team-member .role {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    display: block;
+  }
+  .team-member .tenure {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+  /* Footer & Contact */
+  .site-footer {
+    background-color: var(--color-dark);
+    color: #a1a1aa;
+    padding: clamp(4rem, 8vw, 7rem) 0 2rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-12);
+    margin-bottom: var(--space-12);
+  }
+  .footer-brand h2 {
+    color: var(--color-surface);
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+  }
+  .footer-heading {
+    color: var(--color-surface);
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-6);
+  }
+  .footer-contact li {
+    margin-bottom: var(--space-3);
+  }
+  .footer-contact a:hover {
+    color: var(--color-accent);
+  }
+  .social-links {
+    display: flex;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+  .social-links a {
+    color: var(--color-surface);
+    padding: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .social-links a:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-dark);
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: var(--space-6);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-4);
+    font-size: var(--text-sm);
+  }
+  .footer-legal-links {
+    display: flex;
+    gap: var(--space-6);
+  }
+  .footer-legal-links button {
+    color: inherit;
+    font-size: inherit;
+    transition: color 0.2s ease;
+  }
+  .footer-legal-links button:hover {
+    color: var(--color-surface);
+  }
+
+  /* Modals */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .modal-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal-card {
+    background-color: var(--color-surface);
+    width: 100%;
+    max-width: 480px;
+    padding: var(--space-8);
+    border-radius: 4px;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+  }
+  .modal-overlay.is-active .modal-card {
+    transform: translateY(0);
+  }
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
+  }
+  .modal-close:hover {
+    color: var(--color-text);
+  }
+  .modal-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+    padding-right: 2rem;
+  }
+  .modal-body {
+    color: var(--color-text-muted);
+  }
+  .modal-body a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  /* Cookie Banner */
+  .cookie-banner {
+    position: fixed;
+    bottom: var(--space-4);
+    left: var(--space-4);
+    right: var(--space-4);
+    max-width: 400px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: var(--space-6);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    z-index: 8000;
+    border-radius: 4px;
+    transform: translateY(150%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .cookie-banner.is-visible {
+    transform: translateY(0);
+  }
+  .cookie-banner p {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+  }
+  .cookie-actions {
+    display: flex;
+    gap: var(--space-3);
+  }
+  .cookie-actions .btn {
+    padding: 0.5rem 1rem;
+    font-size: var(--text-sm);
+    flex: 1;
+  }
+
+</style>
+</head>
+<body>
+<!-- DEMO NOTICE BANNER - benedictjaros.com -->
+<style>
+#__demo_spacer{display:block;}
+#__demo_notice,#__demo_notice *{box-sizing:border-box;margin:0;padding:0;}
+#__demo_notice{
+  position:fixed;top:0;left:0;right:0;z-index:99999;
+  background:rgba(9,9,11,.97);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  font-family:system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+#__demo_inner{
+  max-width:1280px;margin:0 auto;
+  padding:0 44px 0 18px;min-height:38px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+#__demo_dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;background:#f5c842;box-shadow:0 0 7px rgba(245,200,66,.55);}
+#__demo_label{color:#f5c842;font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;flex-shrink:0;}
+#__demo_divider{color:rgba(255,255,255,.15);font-size:12px;flex-shrink:0;}
+#__demo_text{color:rgba(255,255,255,.45);font-size:11.5px;line-height:1.45;flex:1 1 160px;}
+#__demo_links{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+#__demo_links a{
+  color:rgba(255,255,255,.38);font-size:11px;text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  transition:color .15s,border-color .15s;white-space:nowrap;
+}
+#__demo_links a:hover{color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.4);}
+#__demo_link_sep{color:rgba(255,255,255,.15);font-size:10px;}
+#__demo_close{
+  position:absolute;right:0;top:0;bottom:0;width:40px;
+  background:none;border:none;cursor:pointer;
+  color:rgba(255,255,255,.28);font-size:16px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:color .15s;
+}
+#__demo_close:hover{color:rgba(255,255,255,.7);}
+@media(max-width:560px){
+  #__demo_inner{padding:7px 44px 7px 14px;gap:6px;}
+  #__demo_text{font-size:11px;flex:1 1 100%;order:3;}
+  #__demo_dot,#__demo_label{order:1;}
+  #__demo_divider{order:2;}
+  #__demo_links{order:4;}
+}
+</style>
+<div id="__demo_spacer"></div>
+<div id="__demo_notice" role="banner" aria-label="Demo notice">
+  <div id="__demo_inner">
+    <span id="__demo_dot"></span>
+    <span id="__demo_label">Demo</span>
+    <span id="__demo_divider">/</span>
+    <span id="__demo_text">Unofficial remake &mdash; not the real website. All content &amp; trademarks belong to their owners.</span>
+    <div id="__demo_links">
+      <a href="https://benedictjaros.com/impressum" target="_blank" rel="noopener noreferrer">Impressum</a>
+      <span id="__demo_link_sep">&middot;</span>
+      <a href="https://benedictjaros.com/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+    </div>
+  </div>
+  <button id="__demo_close" aria-label="Close demo notice">&#x2715;</button>
+</div>
+<script>
+(function () {
+  var spacer = document.getElementById('__demo_spacer');
+  var b = document.getElementById('__demo_notice');
+  var x = document.getElementById('__demo_close');
+  if (!b || !spacer) return;
+  function sync() { spacer.style.height = b.offsetHeight + 'px'; }
+  function hide() {
+    b.style.display = 'none'; spacer.style.height = '0';
+    try { sessionStorage.setItem('__demo_closed', '1'); } catch (e) {}
+  }
+  try { if (sessionStorage.getItem('__demo_closed')) { b.style.display = 'none'; spacer.style.height = '0'; return; } } catch (e) {}
+  sync();
+  window.addEventListener('resize', function () { if (b.style.display !== 'none') sync(); });
+  if (x) x.addEventListener('click', hide);
+}());
+</script>
+
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#" class="logo">Elektro Rudig</a>
+    
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#dienstleistungen">Dienstleistungen</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menü öffnen" aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobile-menu" aria-hidden="true">
+  <nav aria-label="Mobile Navigation">
+    <ul>
+      <li><a href="#ueber-uns" class="mobile-link">Über uns</a></li>
+      <li><a href="#dienstleistungen" class="mobile-link">Dienstleistungen</a></li>
+      <li><a href="#team" class="mobile-link">Team</a></li>
+      <li><a href="#kontakt" class="mobile-link">Kontakt</a></li>
+    </ul>
+  </nav>
+</div>
+
+<main id="main">
+  
+  <section class="hero container">
+    <div class="hero-grid">
+      <div class="hero-content reveal">
+        <h1>Ihr Elektriker im Raum Mils und Umgebung</h1>
+        <p>Präzise, zuverlässig und zukunftssicher. Wir sind Ihr regionaler Partner für hochwertige Elektroinstallationen und Photovoltaik-Anlagen.</p>
+        <button class="btn trigger-placeholder" data-feature="Jetzt Beratung anfragen">
+          Jetzt Beratung anfragen <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+      <div class="hero-visual reveal" style="--i:1">
+        <img src="https://www.elektro-rudig.at/wp-content/uploads/2024/09/Elektro-Rudig-blitz-final-v01.png" alt="Elektro Rudig Blitz Grafik">
+      </div>
+    </div>
+  </section>
+
+  <section id="ueber-uns" class="section about">
+    <div class="container">
+      <div class="about-content reveal">
+        <h2 class="section-title">Über uns</h2>
+        <p>Seit der Gründung im Juli 2021 steht Elektro Andreas Rudig für höchste Qualität, Termintreue und Handschlagqualität. Als moderner Tiroler Elektrofachbetrieb verbinden wir traditionelles Handwerk mit innovativer Technik.</p>
+        <blockquote>
+          "Handschlagqualität ist für uns kein leeres Wort, sondern die Basis jeder erfolgreichen Zusammenarbeit."
+        </blockquote>
+        <p>Egal ob es sich um eine kleine Reparatur, eine komplexe Hausinstallation oder die Planung und Umsetzung einer effizienten Photovoltaikanlage handelt – wir stehen Ihnen mit Rat und Tat zur Seite!</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dienstleistungen" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">Dienstleistungen</h2>
+        <p class="section-subtitle">Mit jahrelanger Erfahrung und modernstem Know-how.</p>
+      </div>
+      
+      <div class="services-grid">
+        <article class="service-card reveal" style="--i:0">
+          <h3>Photovoltaik</h3>
+          <p>Nutzen Sie die Kraft der Sonne. Wir planen und installieren Ihre maßgeschneiderte PV-Anlage für eine nachhaltige Energiezukunft.</p>
+          <button class="btn btn--outline trigger-placeholder" data-feature="Photovoltaik Beratung">Jetzt Beratung anfragen</button>
+        </article>
+        
+        <article class="service-card reveal" style="--i:1">
+          <h3>Installationen</h3>
+          <p>Von der intelligenten Gebäudeleittechnik bis zur klassischen Elektroinstallation im Neu- und Altbau.</p>
+          <button class="btn btn--outline trigger-placeholder" data-feature="Angebot Installationen">Angebot einholen</button>
+        </article>
+        
+        <article class="service-card reveal" style="--i:2">
+          <h3>Reparaturen</h3>
+          <p>Schnelle und fachgerechte Störungsbehebung. Wir finden den Fehler und sorgen für sicheren Betrieb.</p>
+          <button class="btn btn--outline trigger-placeholder" data-feature="Reparatur Kontakt">Kontakt aufnehmen</button>
+        </article>
+        
+        <article class="service-card reveal" style="--i:3">
+          <h3>E-Check</h3>
+          <p>Sicherheit geht vor. Wir überprüfen Ihre elektrischen Anlagen und Geräte nach den neuesten gesetzlichen Normen.</p>
+          <button class="btn btn--outline trigger-placeholder" data-feature="E-Check Anfrage">E-Check anfragen</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="section about">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">Unser Team</h2>
+        <p class="section-subtitle">Die Experten hinter unserer Arbeit.</p>
+      </div>
+      
+      <div class="team-grid">
+        <div class="team-member reveal" style="--i:0">
+          <div class="team-img-wrapper">
+            <img src="https://www.elektro-rudig.at/wp-content/uploads/2024/09/andreas-rudig.jpg" alt="Andreas Rudig" loading="lazy">
+          </div>
+          <h4>Andreas Rudig</h4>
+          <span class="role">Geschäftsführer</span>
+          <span class="tenure">Im Team seit 2021</span>
+        </div>
+        
+        <div class="team-member reveal" style="--i:1">
+          <div class="team-img-wrapper">
+            <img src="https://www.elektro-rudig.at/wp-content/uploads/2024/09/belinda-rudig.jpg" alt="Belinda Rudig" loading="lazy">
+          </div>
+          <h4>Belinda Rudig</h4>
+          <span class="role">Administration</span>
+          <span class="tenure">Im Team seit 2021</span>
+        </div>
+        
+        <div class="team-member reveal" style="--i:2">
+          <div class="team-img-wrapper">
+            <img src="https://www.elektro-rudig.at/wp-content/uploads/2024/09/fabian-bacher.jpg" alt="Fabian Bacher" loading="lazy">
+          </div>
+          <h4>Fabian Bacher</h4>
+          <span class="role">Elektrotechniker</span>
+          <span class="tenure">Im Team seit 2022</span>
+        </div>
+        
+        <div class="team-member reveal" style="--i:3">
+          <div class="team-img-wrapper">
+            <img src="https://www.elektro-rudig.at/wp-content/uploads/2024/09/thomas-rudig.jpg" alt="Thomas Rudig" loading="lazy">
+          </div>
+          <h4>Thomas Rudig</h4>
+          <span class="role">Elektrotechniker</span>
+          <span class="tenure">Im Team seit 2022</span>
+        </div>
+        
+        <div class="team-member reveal" style="--i:4">
+          <div class="team-img-wrapper">
+            <img src="https://www.elektro-rudig.at/wp-content/uploads/2024/09/tiziano-jahnig.jpg" alt="Tiziano Jahnig" loading="lazy">
+          </div>
+          <h4>Tiziano Jahnig</h4>
+          <span class="role">Elektrotechniker</span>
+          <span class="tenure">Im Team seit 2023</span>
+        </div>
+        
+        <div class="team-member reveal" style="--i:5">
+          <div class="team-img-wrapper">
+            <img src="https://www.elektro-rudig.at/wp-content/uploads/2024/09/rene-hofer_untertrifaller.jpg" alt="René Hofer-Untertrifaller" loading="lazy">
+          </div>
+          <h4>René Hofer-Untertrifaller</h4>
+          <span class="role">Elektrotechniker</span>
+          <span class="tenure">Im Team seit 2023</span>
+        </div>
+        
+        <div class="team-member reveal" style="--i:6">
+          <div class="team-img-wrapper">
+            <img src="https://www.elektro-rudig.at/wp-content/uploads/2024/09/alexander-witting.jpg" alt="Alexander Witting" loading="lazy">
+          </div>
+          <h4>Alexander Witting</h4>
+          <span class="role">Elektrotechniker</span>
+          <span class="tenure">Im Team seit 2023</span>
+        </div>
+        
+        <div class="team-member reveal" style="--i:7">
+          <div class="team-img-wrapper">
+            <img src="https://www.elektro-rudig.at/wp-content/uploads/2024/09/mathias-moser.jpg" alt="Mathias Moser" loading="lazy">
+          </div>
+          <h4>Mathias Moser</h4>
+          <span class="role">Lehrling</span>
+          <span class="tenure">Im Team seit 2023</span>
+        </div>
+        
+        <div class="team-member reveal" style="--i:8">
+          <div class="team-img-wrapper">
+            <img src="https://www.elektro-rudig.at/wp-content/uploads/2024/09/tobias-steinlechner.jpg" alt="Tobias Steinlechner" loading="lazy">
+          </div>
+          <h4>Tobias Steinlechner</h4>
+          <span class="role">Lehrling</span>
+          <span class="tenure">Im Team seit 2024</span>
+        </div>
+        
+        <div class="team-member reveal" style="--i:9">
+          <div class="team-img-wrapper">
+            <img src="https://www.elektro-rudig.at/wp-content/uploads/2024/09/dario-weinberger.jpg" alt="Dario Weinberger" loading="lazy">
+          </div>
+          <h4>Dario Weinberger</h4>
+          <span class="role">Lehrling</span>
+          <span class="tenure">Im Team seit 2024</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="kontakt" class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h2>Elektro Rudig</h2>
+        <p>Präzise, zuverlässig und zukunftssicher. Ihr Partner für Elektroinstallationen in Tirol.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="footer-heading">Kontakt</h3>
+        <ul class="footer-contact">
+          <li>
+            <span class="icon-text"><i data-lucide="map-pin"></i> Raum Mils und Umgebung</span>
+          </li>
+          <li>
+            <a href="tel:+436765302338" class="icon-text"><i data-lucide="phone"></i> +43 676 530 23 38</a>
+          </li>
+          <li>
+            <a href="mailto:office@elektro-rudig.at" class="icon-text"><i data-lucide="mail"></i> office@elektro-rudig.at</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="footer-heading">Bürozeiten</h3>
+        <ul>
+          <li>Montag - Freitag</li>
+          <li>07:30 - 12:00 Uhr</li>
+          <li>13:00 - 17:00 Uhr</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2026 Elektro Rudig — All original content, images & trademarks are property of their respective owners. Website rebuilt by Benedict Jaros.</p>
+      <div class="footer-legal-links">
+        <button class="trigger-demo-notice">Impressum</button>
+        <button class="trigger-demo-notice">Datenschutzerklärung</button>
+        <button class="trigger-demo-notice">AGB's</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Placeholder Modal -->
+<div class="modal-overlay" id="placeholder-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="placeholder-title">
+  <div class="modal-card">
+    <button class="modal-close" aria-label="Schließen"><i data-lucide="x"></i></button>
+    <h3 class="modal-title font-heading" id="placeholder-title">Funktion in Entwicklung</h3>
+    <p class="modal-body">This feature will be live once the website is launched and configured. Contact us in the meantime — we'd love to hear from you.</p>
+  </div>
+</div>
+
+<!-- Demo Notice Modal -->
+<div class="modal-overlay" id="demo-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="demo-title">
+  <div class="modal-card">
+    <button class="modal-close" aria-label="Schließen"><i data-lucide="x"></i></button>
+    <h3 class="modal-title font-heading" id="demo-title">Rechtliche Hinweise</h3>
+    <div class="modal-body">
+      <p>Diese Website ist ein Demo-Remake und wurde nicht von oder für das Unternehmen erstellt. Die Inhalte dienen ausschließlich Demonstrationszwecken. Für unsere eigenen rechtlichen Informationen:</p>
+      <br>
+      <p><a href="https://benedictjaros.com/impressum" target="_blank">Impressum</a></p>
+      <p><a href="https://benedictjaros.com/datenschutz" target="_blank">Datenschutz</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie Banner">
+  <p>Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern. Durch die weitere Nutzung stimmen Sie der Verwendung zu.</p>
+  <div class="cookie-actions">
+    <button class="btn" id="cookie-accept">Akzeptieren</button>
+    <button class="btn btn--outline" id="cookie-decline">Ablehnen</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+
+    // Mobile Menu
+    const navToggle = document.querySelector('.nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+      navToggle.setAttribute('aria-expanded', isMenuOpen);
+      if (isMenuOpen) {
+        mobileMenu.classList.add('is-open');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobileMenu.classList.remove('is-open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    }
+
+    navToggle.addEventListener('click', toggleMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', () => {
+      if(isMenuOpen) toggleMenu();
+    }));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (isMenuOpen) toggleMenu();
+        closeAllModals();
+      }
+    });
+
+    // Scroll Reveal
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.12
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Modals
+    const placeholderModal = document.getElementById('placeholder-modal');
+    const demoModal = document.getElementById('demo-modal');
+    const placeholderTitle = document.getElementById('placeholder-title');
+
+    function openModal(modal) {
+      modal.classList.add('is-active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAllModals() {
+      [placeholderModal, demoModal].forEach(modal => {
+        modal.classList.remove('is-active');
+        modal.setAttribute('aria-hidden', 'true');
+      });
+      if(!isMenuOpen) document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.trigger-placeholder').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const featureName = btn.getAttribute('data-feature');
+        if(featureName) placeholderTitle.textContent = featureName;
+        openModal(placeholderModal);
+      });
+    });
+
+    document.querySelectorAll('.trigger-demo-notice').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(demoModal);
+      });
+    });
+
+    document.querySelectorAll('.modal-close').forEach(btn => {
+      btn.addEventListener('click', closeAllModals);
+    });
+
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeAllModals();
+      });
+    });
+
+    // Cookie Banner
+    const cookieBanner = document.getElementById('cookie-banner');
+    const btnAccept = document.getElementById('cookie-accept');
+    const btnDecline = document.getElementById('cookie-decline');
+
+    if (!localStorage.getItem('cookie_consent')) {
+      setTimeout(() => {
+        cookieBanner.classList.add('is-visible');
+      }, 1000);
+    }
+
+    function handleCookieChoice(choice) {
+      localStorage.setItem('cookie_consent', choice);
+      cookieBanner.classList.remove('is-visible');
+    }
+
+    btnAccept.addEventListener('click', () => handleCookieChoice('accepted'));
+    btnDecline.addEventListener('click', () => handleCookieChoice('declined'));
+  });
+</script>
+</body>
+</html>
